@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<!-- 
+	
+		pom.xml은 Maven 구성의 프로젝트에서 사용되는 기능으로 Spring에서 편리하게 DB를 사용할 수 이도록 
+		lib를 다운 받게 해주는 설정 파일이다.
+		필요한 lib는 http://mvnrepository.com/ 주소에서 필요한 lib를 검색하여 dependency를 붙여주면 사용이 가능하게 된다.
+		
+		Mybatis 사용을 위한 기본 dependency는 다음과 같다.
+		spring-jdbc : Spring 에서 지원하는 JDBC
+		mysql-connector-java : MySQL 커넥션 드라이브를 제공
+		mybatis : myBatis
+		mybatis-spring : Spring 에서 연동을 지원하는 myBatis
+		commons-dbcp : 커넥션풀을 담당하는 Apache Commons DBCP
+		
+	 -->
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.board</groupId>
-	<artifactId>test</artifactId>
-	<name>jbBoard_test</name>
+	<artifactId>study</artifactId>
+	<name>Study_HelloSpring</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -32,52 +46,6 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-				
-		   
-        <!-- spring-jdbc -->
-        <dependency>
-           <groupId>org.springframework</groupId>
-           <artifactId>spring-jdbc</artifactId>
-           <version>${org.springframework-version}</version>
-        </dependency>
-        
-        <!-- mysql-connector-java -->
-        <dependency>
-           <groupId>mysql</groupId>
-           <artifactId>mysql-connector-java</artifactId>
-           <version>5.1.31</version>
-        </dependency>
-        
-        <!-- mybatis -->
-        <dependency>
-           <groupId>org.mybatis</groupId>
-           <artifactId>mybatis</artifactId>
-           <version>3.2.7</version>
-        </dependency>
-        <dependency>
-           <groupId>org.mybatis</groupId>
-           <artifactId>mybatis-spring</artifactId>
-           <version>1.2.2</version>
-        </dependency>
-        
-        <!-- commons-dbcp -->
-        <dependency>
-           <groupId>commons-dbcp</groupId>
-           <artifactId>commons-dbcp</artifactId>
-           <version>1.4</version>
-        </dependency>
-        
-        <!-- commons-lang -->
-        <dependency>
-           <groupId>commons-lang</groupId>
-           <artifactId>commons-lang</artifactId>
-           <version>2.6</version>
-        </dependency>
-
-
-
-
-		
 				
 		<!-- AspectJ -->
 		<dependency>
