@@ -39,7 +39,8 @@ public class ViewController {
 		BoardVo boardVo = this.boardDao.selectOne(seq);
 		
 		model.addAttribute("board", boardVo);
-		// jsp 화면에서 뿌려질때 어떤 이름의 객체로 뿌려줄것인지 설정(board)
+		// jsp 화면에서 뿌려질때 어떤 이름의 객체로 뿌려줄것인지 설정
+		// model.addAttribute("객체명", db에서 받아온 객체);
 	
 		return "board_View";
 	}

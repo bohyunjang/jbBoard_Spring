@@ -26,6 +26,7 @@ function del(){
 	<tr><td><b>작성시간</b></td><td>${board.reg_datetime }</td></tr>
 	<tr><td><b>내용</b></td><td>${board.content }</td></tr>
 	<tr><td><b>조회수</b></td><td>${board.cnt }</td></tr>
+	
 	</table>
 	
 	
