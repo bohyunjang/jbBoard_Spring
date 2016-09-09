@@ -18,9 +18,16 @@ public class BoardDao{
 		return this.boardMapper.selectList();
 	}
 	
+	public BoardVo selectOne(int seq){
+		System.out.println("boardDao... selectOne..");
+		
+		return this.boardMapper.selectOne(seq);
+	}
 	
 	
-/*
+	/*
+	
+
 	@Override
 	public List<BoardVo> selectList() {
 		// TODO Auto-generated method stub

@@ -36,7 +36,11 @@ public class ViewController {
 	public String BoardView(@PathVariable int seq, Model model){
 		
 		System.out.println("boardView controller");
+		BoardVo boardVo = this.boardDao.selectOne(seq);
 		
+		model.addAttribute("board", boardVo);
+		// jsp 화면에서 뿌려질때 어떤 이름의 객체로 뿌려줄것인지 설정(board)
+	
 		return "board_View";
 	}
 	

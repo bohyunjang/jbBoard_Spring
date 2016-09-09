@@ -21,7 +21,7 @@ function del(){
 	
 	<table width=300 border=1 cellspacing=0 cellpadding=5>
 	<tr><td><b>인덱스</b></td><td>${board.seq }</td></tr>
-	<tr><td><b>제목</b></td><td>${board.subject}</td></tr>
+	<tr><td><b>제목</b></td><td>${board.title}</td></tr>
 	<tr><td><b>작성자</b></td><td>${board.user_name}</td></tr>
 	<tr><td><b>작성시간</b></td><td>${board.reg_datetime }</td></tr>
 	<tr><td><b>내용</b></td><td>${board.content }</td></tr>
