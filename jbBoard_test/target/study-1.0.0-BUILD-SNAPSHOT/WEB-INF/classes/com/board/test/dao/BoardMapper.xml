@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ 
+<mapper namespace="com.board.test.dao.BoardMapper">
+ 
+    <resultMap id="boardMap" type="com.board.test.dao.boardVo">
+        <id     property="seq"            column="seq" />
+        <result property="user_name"     column="user_name" />
+        <result property="title"      column="title" />
+        <result property="content"      column="content" />
+        <result property="reg_datetime" column="reg_datetime" />
+        <result property="cnt" column="cnt" />
+    </resultMap>
+ 
+    <select id="select" resultMap="boardMap">
+        SELECT  * FROM boards
+    </select>
+ 
+    <select id="selectOne" resultMap="boardMap">
+        SELECT  * FROM boards WHERE seq = #{seq}
+    </select>
+ 
+    <insert id="insert">
+         INSERT INTO boards (seq,user_name,title,content,reg_datetime) 
+            VALUES (#{seq},#{user_name},#{title},#{content},sysdate())    
+    </insert>
+ 
+    <update id="update">
+         UPDATE boards SET
+              user_name = #{user_name},
+              title = #{title},
+              content = #{content},
+              reg_datetime = #{reg_datetime}
+         WHERE seq = #{seq} LIMIT 1
+    </update>
+ 
+    <delete id="delete">
+         DELETE FROM boards WHERE seq = #{seq}
+    </delete>
+ 
+</mapper>
