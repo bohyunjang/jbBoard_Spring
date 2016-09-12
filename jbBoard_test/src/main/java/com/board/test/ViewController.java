@@ -47,27 +47,31 @@ public class ViewController {
 		// model.addAttribute("객체명", db에서 받아온 객체);
 	
 		return "board_View";
-	}
+	}	
 	
 	@RequestMapping(value="/write",method=RequestMethod.POST)
 	public String BoardWrite(BoardVo boardVo,//@ModelAttribute("boardVo")  
 			RedirectAttributes redirectAttributes){
 		
 		System.out.println("boardWriteController....");
-		//Integer seq = boardVo.getSeq();
-		
-	//	boardVo.setSeq(boardVo.getSeq()+1);
 		
 		boardVo.setSeq(boardDao.seqMax()+1);
-		System.out.println("input set:: "+boardVo.getSeq());
-		
-		//System.out.println(boardVo.getSeq());
-		
 		this.boardDao.insert(boardVo);
 		redirectAttributes.addFlashAttribute("message", "추가되었습니다.");
 
 		return "redirect:/";
 	}
+	
+	@RequestMapping(value="/delete", method=RequestMethod.POST)
+	public String BoardDelete(@RequestParam(value = "seq") int seq,RedirectAttributes redirectAttributes){
+		System.out.println("boardDelete Controller.....");
+		
+		this.boardDao.delete(seq);
+		redirectAttributes.addFlashAttribute("message","삭제되었습니다.");
+		
+		return "redirect:/";
+	}
+	
 
 	/*
 	 * jsp 이동 컨트롤러
@@ -75,6 +79,7 @@ public class ViewController {
 	
 	@RequestMapping(value="/update_move", method=RequestMethod.GET)
 	public String BoardUpdateMove(Model model){
+		System.out.println("boardUpdate controller......");
 		
 		return "board_update";
 		

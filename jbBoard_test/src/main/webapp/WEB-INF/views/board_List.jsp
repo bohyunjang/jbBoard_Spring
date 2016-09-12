@@ -24,7 +24,8 @@ body {
 
 </head>
 <body>
-	<marquee behavior="alternate" scrolldealy="100" direction="right">
+	<h1>${message}</h1>
+	<marquee behavior="alternate" scrolldelay="100" direction="right">
 		게시판 리스트 테스트 입니다. </marquee>
 	<table class="board" width="1000" height="200" border="2" bgcolor="d8d8d8">
 		<colgroup>

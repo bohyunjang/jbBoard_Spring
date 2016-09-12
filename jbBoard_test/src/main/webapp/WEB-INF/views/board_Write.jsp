@@ -32,9 +32,7 @@
 		</div>
 		<div>
 			<span>내용</span>
-			<textarea id="content" name="content" rows="10" cols="20">
-                ${boards.content}
-            </textarea>
+			<textarea id="content" name="content" rows="10" cols="20">${boards.content}</textarea>
 		</div>
 <!-- 		<div>
 			<span>작성시간</span>

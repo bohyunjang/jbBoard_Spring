@@ -9,7 +9,7 @@
 function del(){
 	alert("실행 되나???");
 	
-	if(confirm("삭제하시겠습니까?")) document.form.submit();
+	if(confirm("삭제하시겠습니까?")) form.submit();
 	alert("삭제완료??");
 }
 </script>

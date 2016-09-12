@@ -6,7 +6,7 @@
 <mapper namespace="com.board.test.dao.BoardMapper">
  
     <resultMap id="boardMap" type="com.board.test.dao.BoardVo">
-        <result property="seq"            column="seq" />
+        <id property="seq"            column="seq" />
         <result property="user_name"     column="user_name" />
         <result property="title"      column="title" />
         <result property="content"      column="content" />
