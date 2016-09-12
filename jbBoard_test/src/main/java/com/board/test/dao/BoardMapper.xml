@@ -6,7 +6,7 @@
 <mapper namespace="com.board.test.dao.BoardMapper">
  
     <resultMap id="boardMap" type="com.board.test.dao.BoardVo">
-        <id     property="seq"            column="seq" />
+        <result property="seq"            column="seq" />
         <result property="user_name"     column="user_name" />
         <result property="title"      column="title" />
         <result property="content"      column="content" />
@@ -21,6 +21,10 @@
     <select id="selectOne" resultMap="boardMap">
         SELECT  * FROM boards WHERE seq = #{seq}
     </select>
+ 
+ 	<select id="seqMax" resultType="int">
+ 		SELECT MAX(seq) FROM boards
+ 	</select>
  
     <insert id="insert">
          INSERT INTO boards (seq,user_name,title,content,reg_datetime) 

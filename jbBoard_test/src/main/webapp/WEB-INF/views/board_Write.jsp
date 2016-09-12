@@ -9,13 +9,16 @@
 </head>
 <body>
 	<h1>${message}</h1>
-	<form id="form" method="post" action="./write_ok">
-		<input type="hidden" name="seq" id="seq" value="${baord.seq }">
-		<div>
+	<form id="form" method="post" action="./write">
+<%-- 
+<input type="hidden" name="seq" id="seq" value="${baord.seq }">
+ --%>
+	<!-- 	
+	<div>
 			<span>번호</span>
 			<textarea id="seq" name="seq" rows="10" cols="20">
 			</textarea>
-		</div>
+		</div> -->
 
 		<div>
 			<sapn>제목</sapn>
@@ -33,7 +36,7 @@
                 ${boards.content}
             </textarea>
 		</div>
-		<div>
+<!-- 		<div>
 			<span>작성시간</span>
 			<textarea id="reg_datetime" name=" content" rows="10" cols="20">
 			</textarea>
@@ -42,7 +45,7 @@
 			<span>조회수</span>
 			<textarea id="cnt" name=" cnt" rows="10" cols="20">
 			</textarea>
-		</div>
+		</div> -->
 
 
 		<div>

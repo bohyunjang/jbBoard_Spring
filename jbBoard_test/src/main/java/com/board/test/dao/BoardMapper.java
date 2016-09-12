@@ -10,6 +10,8 @@ public interface BoardMapper {
 
 	BoardVo selectOne(int seq);
 
+	int seqMax();
+	
 	void insert(BoardVo boardVo);
 
 	void update(BoardVo boardVo);

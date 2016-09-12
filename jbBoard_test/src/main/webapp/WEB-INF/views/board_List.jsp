@@ -5,43 +5,66 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>스프링 게시판 리스트</title>
+<title>JB 게시판 목록</title>
+
+<style>
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+body {
+	font-family: 'Nanum Gothic', sans-serif;
+}
+</style>
+
+<script type="text/javascript">
+	function move(url) {
+		/* alert("페이지이동"); */
+		location.href = url;
+	}
+</script>
+
 </head>
 <body>
-	<h1>${message }</h1>
-	<table border="1">
+	<marquee behavior="alternate" scrolldealy="100" direction="right">
+		게시판 리스트 테스트 입니다. </marquee>
+	<table class="board" width="1000" height="200" border="2" bgcolor="d8d8d8">
 		<colgroup>
-			<col width="60">
-			<col>
-			<col width="115">
-			<col width="85">
+			<col width="100" />
+			<col width="250" />
+			<col width="100" />
+			<col width="400" />
+			<col width="100" />
+			<col width="100" />
 		</colgroup>
 		<thead>
 			<tr>
-				<th scope="col">글번호</th>
-				<th scope="col">제목</th>
-				<th scope="col">작성자</th>
-				<th scope="col">내용</th>
-				<th scope="col">등록일</th>
-				<th scope="col">조회수</th>
+				<th>번    호</th>
+				<th>제    목</th>
+				<th>작 성 자</th>
+				<th>내    용</th>
+				<th>작 성 일</th>
+				<th>조 회 수</th>
 			</tr>
 		</thead>
-
-		<!-- 몽록이 반복될 영역 -->
+		
+		<!-- 디비에 저장된 게시판이 반복됨 -->
 		<tbody>
-			<c:forEach var="item" items="${list}" varStatus="status">
-				<tr>
-					<td>${item.seq}</td>
-					<td><a href="./${item.seq}">${item.title}</a></td>
-					<td><a href="./${item.seq}">${item.user_name}</td>
-					<td><a href="./${item.seq}">${item.content}</td>
-					<td>${item.reg_datetime}</td>
-					<td>${item.cnt}</td>
-				</tr>
+			<c:forEach var = "item" items="${list}" varStatus="status">
+			<tr>
+				<td align="center">${item.seq }</td>
+				<td><a href="./${item.seq}">${item.title}</a></td>
+				<td align="center">${item.user_name }</td>
+				<td align="center">${item.content }</td>
+				<td align="center">${item.reg_datetime }</td>
+				<td align="center">${item.cnt }</td>
+			</tr>
 			</c:forEach>
 		</tbody>
+	<tfoot>
+		<tr>
+		<td align="center" colspan="5" width="50">1</td>
 	</table>
-	<!-- <input type="button" value="글쓰기" onclick="location.href='./move_write' "> -->
-	<input type="button" value="글쓰기" onclick="location.href='./write' ">
+		<!-- <input type="button" value="처음으로(index)" onclick="move('index.jsp')"> -->
+		<input type="button" value="글쓰기" onclick="move('./write_move')"/>
+		
 </body>
 </html>

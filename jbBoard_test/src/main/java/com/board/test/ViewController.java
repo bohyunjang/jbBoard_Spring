@@ -7,9 +7,13 @@ import javax.annotation.Resources;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.board.test.dao.BoardDao;
 import com.board.test.dao.BoardVo;
@@ -30,13 +34,13 @@ public class ViewController {
 		
 		return "board_List";
 	}
-	
-	
+
 	@RequestMapping(value="/{seq}")
 	public String BoardView(@PathVariable int seq, Model model){
 		
 		System.out.println("boardView controller");
 		BoardVo boardVo = this.boardDao.selectOne(seq);
+		System.out.println(boardVo.getSeq());
 		
 		model.addAttribute("board", boardVo);
 		// jsp 화면에서 뿌려질때 어떤 이름의 객체로 뿌려줄것인지 설정
@@ -45,18 +49,54 @@ public class ViewController {
 		return "board_View";
 	}
 	
-	@RequestMapping(value="/update", method=RequestMethod.POST)
-	public String BoardUpdate(Model model){
+	@RequestMapping(value="/write",method=RequestMethod.POST)
+	public String BoardWrite(BoardVo boardVo,//@ModelAttribute("boardVo")  
+			RedirectAttributes redirectAttributes){
 		
-		return null;
+		System.out.println("boardWriteController....");
+		//Integer seq = boardVo.getSeq();
+		
+	//	boardVo.setSeq(boardVo.getSeq()+1);
+		
+		boardVo.setSeq(boardDao.seqMax()+1);
+		System.out.println("input set:: "+boardVo.getSeq());
+		
+		//System.out.println(boardVo.getSeq());
+		
+		this.boardDao.insert(boardVo);
+		redirectAttributes.addFlashAttribute("message", "추가되었습니다.");
+
+		return "redirect:/";
+	}
+
+	/*
+	 * jsp 이동 컨트롤러
+	 */
+	
+	@RequestMapping(value="/update_move", method=RequestMethod.GET)
+	public String BoardUpdateMove(Model model){
+		
+		return "board_update";
 		
 	}
 	
-	@RequestMapping(value="/write", method= RequestMethod.GET)
-	public String BoardWrite(Model model){
+	@RequestMapping(value="/write_move", method= RequestMethod.GET)
+	public String dispBoardWrite(@RequestParam(value = "seq", 
+	defaultValue = "0") int seq, Model model) {
 		
-		System.out.println("boardWrite controller");
+		System.out.println("boardWriteMove controller..........");
+		System.out.println(seq);
 		
+		int seqMax = boardDao.seqMax();
+		System.out.println("seqMax:: "+seqMax);
+		
+		if(seq>0){
+			
+			BoardVo boardVo = this.boardDao.selectOne(seq);
+			System.out.println("seq:: "+boardVo.getSeq());
+			model.addAttribute("boardVo",boardVo);
+			
+		}
 		return "board_Write";
 	}
 	
