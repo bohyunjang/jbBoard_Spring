@@ -87,7 +87,7 @@ public class ViewController {
 	 */
 	
 	@RequestMapping(value="/update_move", method=RequestMethod.GET)
-	public String BoardUpdateMoveww(Model model){
+	public String moveBoardUpdate(Model model){
 		System.out.println("boardUpdate move controller...");
 		
 		return "board_Update";
