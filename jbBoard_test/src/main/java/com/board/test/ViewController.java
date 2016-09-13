@@ -72,6 +72,15 @@ public class ViewController {
 		return "redirect:/";
 	}
 	
+	@RequestMapping(value="/update",method=RequestMethod.POST)
+	public String BoardUpdate(int seq, RedirectAttributes redirectAttributes, BoardVo boardVo){
+		System.out.println("boardUpdate Controller.....");
+		
+		this.boardDao.update(boardVo);
+		redirectAttributes.addFlashAttribute("message","수정되었습니다.");
+		return "redirect:/";
+	}
+	
 
 	/*
 	 * jsp 이동 컨트롤러
@@ -79,9 +88,7 @@ public class ViewController {
 	
 	@RequestMapping(value="/update_move", method=RequestMethod.GET)
 	public String BoardUpdateMoveww(Model model){
-		System.out.println("boardUpdate controller......");
-		
-		
+		System.out.println("boardUpdate move controller...");
 		
 		return "board_Update";
 		
@@ -92,17 +99,10 @@ public class ViewController {
 	defaultValue = "0") int seq, Model model) {
 		
 		System.out.println("boardWriteMove controller..........");
-		System.out.println(seq);
-		
-		int seqMax = boardDao.seqMax();
-		System.out.println("seqMax:: "+seqMax);
-		
 		if(seq>0){
-			
 			BoardVo boardVo = this.boardDao.selectOne(seq);
 			System.out.println("seq:: "+boardVo.getSeq());
 			model.addAttribute("boardVo",boardVo);
-			
 		}
 		return "board_Write";
 	}

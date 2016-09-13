@@ -46,7 +46,7 @@ body {
 						value="${boards.user_name }" size=10 maxlength="8"></td>
 				</tr>
 				<td>내 용</td>
-				<td><textarea id="content" name="content" row="10" cols="30">${boards.content}</textarea></td>
+				<td><textarea id="content" name="content" row="1000" cols="30">${boards.content}</textarea></td>
 				</tr>
 				<!-- <tr>
 					<td>비밀번호</td>
