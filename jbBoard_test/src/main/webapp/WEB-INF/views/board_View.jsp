@@ -4,39 +4,94 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>스프링 게시판 view</title>
-<script type="text/javascript">
-function del(){
-	alert("실행 되나???");
-	
-	if(confirm("삭제하시겠습니까?")) form.submit();
-	alert("삭제완료??");
+<title>게시판 리스트</title>
+
+<style>
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+body {
+	font-family: 'Nanum Gothic', sans-serif;
 }
+</style>
+
+<script type="text/javascript">
+	function move(url) {
+		location.href = url;
+	}
+	function boardWriteChect() {
+		var form = document.BoardWriteForm;
+		return true;
+	}
+	function boardDelete(){
+		alert("파일 삭제 스크립트");
+		if(confirm("삭제하시겠습니까?")) form.submit();
+	}
 </script>
 </head>
 <body>
-	<form id="form"name="form"method="post"action="./delete">
-		<input type = "hidden" id="seq" name="seq" value="${board.seq}">
+	<!-- table summary가 폼보다 먼저 올라오는 경우와 폼이 먼저호는 경우가 다른가? -->
+	<form id="form"name="form" method="post" action="./delete">
+	<input type = "hidden" id="seq" name="seq" value="${board.seq}">
 	</form>
-	
-	<table width=300 border=1 cellspacing=0 cellpadding=5>
-	<tr><td><b>인덱스</b></td><td>${board.seq }</td></tr>
-	<tr><td><b>제목</b></td><td>${board.title}</td></tr>
-	<tr><td><b>작성자</b></td><td>${board.user_name}</td></tr>
-	<tr><td><b>작성시간</b></td><td>${board.reg_datetime }</td></tr>
-	<tr><td><b>내용</b></td><td>${board.content }</td></tr>
-	<tr><td><b>조회수</b></td><td>${board.cnt }</td></tr>
-	
-	</table>
-	
-	
-	<table width=700 >
-		
-		<tr><td>
-		<input type="button" value="삭제" onclick="del()">
-		<input type="button" value="수정" onclick="location.href='./move_update'">
-		<input type="button" value="목록" onclick="location.href='./'">	</td></tr>
-		
-	</table>
+		<table summary="전체 테이블 구성">
+			<tr>
+				<td colspan="2">
+				
+					<table border="1" summary="목록 테이블 구성">
+						<tr>
+							<td><div align="center">
+									<h3>
+										<b>글 읽기</b>
+									</h3>
+								</div></td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<table border="2" summary="목록 테이블 구성">
+									<tr>
+										<td align="center" bgcolor="#dddddd" width="40%">인덱스</td>
+										<td bgcolor="#ffffe8" colspan="3">${board.seq}</td>
+									</tr>
+									<tr>
+										<td align="center" bgcolor="#dddddd">제 목</td>
+										<td bgcolor="#ffffe8" colspan="3">${board.title }</td>
+									</tr>
+									<tr>
+										<td align="center" bgcolor="#dddddd" width="30%">작성자</td>
+										<td bgcolor="#ffffe8" width="40%">${board.user_name }</td>
+										<td align="center" bgcolor="#dddddd" width="75%">작성일</td>
+										<td bgcolor="#ffffe8" width="40%">${board.reg_datetime }</td>
+									</tr>
+<!-- 									<tr>
+										<td align="center" bgcolor="#dddddd">E-mail</td>
+										<td bgcolor="#ffffe8">admin@test.com</td>
+									</tr>
+ -->								<tr>
+										<td align="center" bgcolor="#dddddd">내  용</td>
+										<td bgcolor="#ffffe8" colspan="3">${board.content }</td>
+									</tr>
+									<tr>
+										<td align="center" bgcolor="#dddddd">조회수</td>
+										<td bgcolor="#ffffe8" colspan="3">${board.cnt }</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td align="center" colspan="2">
+								<hr size="1">
+								<div align="center">
+									[ <input type="button" value="목록"	onclick="move('./');"> | 
+									  <input type="button" value="수정" onclick="move('board_Update.jsp');">|
+									<!-- <input type="button" value="답변" onclick="move('Board_Reply.jsp');"> | -->
+									  <input type="button" value="삭제" onclick="boardDelete()"> ] <br>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</form>
 </body>
 </html>

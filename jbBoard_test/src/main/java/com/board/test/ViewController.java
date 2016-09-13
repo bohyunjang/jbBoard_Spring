@@ -78,10 +78,12 @@ public class ViewController {
 	 */
 	
 	@RequestMapping(value="/update_move", method=RequestMethod.GET)
-	public String BoardUpdateMove(Model model){
+	public String BoardUpdateMoveww(Model model){
 		System.out.println("boardUpdate controller......");
 		
-		return "board_update";
+		
+		
+		return "board_Update";
 		
 	}
 	
